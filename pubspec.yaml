@@ -1,0 +1,60 @@
+name: shorts_autopost
+description: Multi-platform auto-posting SaaS for short-form vertical video (YouTube Shorts / IG Reels / FB Reels)
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  # State management
+  provider: ^6.1.2
+
+  # Local database
+  sqflite: ^2.3.3
+  path: ^1.9.0
+  path_provider: ^2.1.3
+
+  # Secure storage for API keys / tokens (Keychain on iOS, EncryptedSharedPreferences on Android)
+  flutter_secure_storage: ^9.2.2
+
+  # Networking
+  http: ^1.2.1
+  dio: ^5.4.3+1
+
+  # OAuth2 for YouTube / Google Drive
+  google_sign_in: ^6.2.1
+  oauth2: ^2.0.2
+  url_launcher: ^6.3.0
+
+  # File picking / Drive watch
+  file_picker: ^8.0.3
+
+  # Video processing (aspect ratio probe, thumbnail/frame extraction)
+  ffmpeg_kit_flutter: ^6.0.3
+  video_thumbnail: ^0.5.3
+  video_player: ^2.9.1
+
+  # Background execution for the burst scheduler
+  workmanager: ^0.5.2
+
+  # Utilities
+  uuid: ^4.4.0
+  crypto: ^3.0.3
+  intl: ^0.19.0
+  json_annotation: ^4.9.0
+  equatable: ^2.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.11
+  json_serializable: ^6.8.0
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
