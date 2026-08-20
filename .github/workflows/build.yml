@@ -12,32 +12,34 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Extract Project ZIP
+      - name: Unpack All Zips
         run: |
-          unzip -o *.zip
+          find . -name "*.zip" -exec unzip -o {} +
           if [ -d "shorts_autopost" ]; then
             cp -r shorts_autopost/* .
           fi
+          ls -la
 
-      - name: Setup Java 17
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'zulu'
+          distribution: 'temurin'
           java-version: '17'
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          cache: true
 
-      - name: Install Dependencies
+      - name: Get Dependencies
         run: flutter pub get
 
-      - name: Build Android APK
-        run: flutter build apk --release
+      - name: Build APK (Release)
+        run: flutter build apk --release --no-tree-shake-icons
 
-      - name: Upload Artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: shorts-auto-post-apk
+          name: shorts-autopost-release
           path: build/app/outputs/flutter-apk/app-release.apk
