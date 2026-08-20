@@ -1,3 +1,4 @@
+cat > /home/claude/shorts_autopost/.github/workflows/build.yml << 'EOF'
 name: Build Flutter APK
 
 on:
@@ -34,7 +35,7 @@ jobs:
 
       - name: Upgrade Android Config
         run: |
-          flutter create . --platforms=android
+          flutter create . --platforms=android --project-name shorts_autopost --org com.shortsautopost.app
 
       - name: Get Dependencies
         run: flutter pub get
@@ -47,3 +48,6 @@ jobs:
         with:
           name: shorts-autopost-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+EOF
+echo "written"
+cat /home/claude/shorts_autopost/.github/workflows/build.yml
